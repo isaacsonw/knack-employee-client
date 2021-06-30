@@ -56,12 +56,22 @@ const DashboardScreen = () => {
 
   useEffect(async () => {
     await axios
-      .get(`http://localhost:4000/api/v1/employees?sortBy=${sort}`)
+      .get(
+        `https://knack-employees.herokuapp.com/api/v1/employees?sortBy=${sort}`,
+        {
+          header: {
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Credentials': true,
+            'Content-Type': 'application/json',
+          },
+        }
+      )
       .then((res) => {
         if (res.data) {
           dispatch(setEmployees(res.data));
         }
-      });
+      })
+      .catch((err) => console.log(err));
   }, [sort]);
 
   const handleChange = (e) => {

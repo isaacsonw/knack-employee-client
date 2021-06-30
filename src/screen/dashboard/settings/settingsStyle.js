@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const SettingsStyle = styled.div`
   width: 100%;
   color: ${({ theme }) => theme.black};
+  margin-top: 5rem;
 
   div {
     background-color: white;
